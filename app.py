@@ -1,5 +1,6 @@
 # app.py
-from flask import Flask, request, jsonify, render_template
+import os
+from flask import Flask, request, jsonify, render_template, send_from_directory
 app = Flask(__name__)
 
 @app.route('/getmsg/', methods=['GET'])
@@ -46,6 +47,11 @@ def post_something():
 def index():
     # return "<h1>Welcome to our server !!</h1>"
     return render_template('index.html')
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'images/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
