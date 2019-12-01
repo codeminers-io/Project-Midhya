@@ -1,1 +1,5 @@
 node_modules
+rasa/.env
+rasa/__pycache__
+rasa/models
+rasa/out.log
