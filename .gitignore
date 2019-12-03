@@ -3,3 +3,5 @@ rasa/.env
 rasa/__pycache__
 rasa/models
 rasa/out.log
+links.txt
+data

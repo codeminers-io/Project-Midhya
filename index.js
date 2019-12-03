@@ -1,35 +1,23 @@
-// From https://github.com/howdyai/botkit#basic-usage
+var env = require('node-env-file');
+env(__dirname + '/.env');
+
 var Botkit = require('botkit');
-var rasa = require('./middleware')({rasa_uri: 'http://localhost:5000'});
+var debug = require('debug')('botkit:main');
 
-var controller = Botkit.slackbot({
-  debug: false,
-  clientId: '',
-  clientSecret: '',
-  clientSigningSecret: '',
-  scopes: ['bot'],
-  json_file_store: __dirname + '/.db/'
-});
+var bot_options = {
+  replyWithTyping: true,
+  json_file_store: __dirname + '/data/.db/'
+};
 
-// Override receive method in botkit
-controller.middleware.receive.use(rasa.receive);
+// Create the Botkit controller, which controls all instances of the bot.
+var controller = Botkit.socketbot(bot_options);
 
-// connect the bot to a stream of messages
-controller.spawn({
-  token: '',
-  name: 'midhya'
-}).startRTM()
+// Set up an Express-powered webserver to expose oauth and webhook endpoints
+var webserver = require(__dirname + '/components/express_webserver.js')(controller);
 
-// Override hears method in botkit
-controller.changeEars(function (patterns, message) {
-  return rasa.hears(patterns, message);
-});
+// Open the web socket server
+controller.openSocketServer(controller.httpserver);
 
-controller.hears([''],'message_received,direct_message,direct_mention,mention', rasa.hears, function(bot, message) {
-
-  console.log('Intent:', message.intent);
-  console.log('Entities:', message.entities);    
-
-  bot.reply(message,"Intent: " + message.intent.name);
-});
+// Start the bot brain in motion!!
+controller.startTicking();
 
