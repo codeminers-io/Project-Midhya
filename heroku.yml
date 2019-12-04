@@ -1,0 +1,8 @@
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: npm start
+  worker:
+    command: rasa run -m models --enable-api --log-file out.log -p 5005 -- cors "*"
+    image: web
