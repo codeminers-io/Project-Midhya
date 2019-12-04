@@ -1,7 +1,6 @@
 FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN rm /var/lib/apt/lists/*
 RUN apt-get update -y && \
     apt-get install -y \
         ca-certificates \
@@ -17,8 +16,10 @@ RUN apt-get update -y && \
         libfreetype6-dev \
         dumb-init \
         libpq-dev \
-		nodejs \
-        ;
+	nodejs \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* \
+	;
 
 RUN mkdir /workdir
 
