@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+RUN rm /var/lib/apt/lists/*
 RUN apt-get update -y && \
     apt-get install -y \
         ca-certificates \
