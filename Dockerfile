@@ -26,7 +26,7 @@ RUN mkdir /workdir
 
 WORKDIR /workdir
 
-COPY /* /workdir/
+COPY / /workdir/
 
 RUN npm install
 
