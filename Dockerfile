@@ -17,6 +17,7 @@ RUN apt-get update -y && \
         dumb-init \
         libpq-dev \
 	nodejs \
+	npm \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	;
