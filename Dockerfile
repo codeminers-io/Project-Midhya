@@ -34,4 +34,8 @@ RUN pip3 install -U pip
 
 RUN pip3 install -r rasa/requirements.txt --extra-index-url https://pypi.rasa.com/simple
 
+RUN chgrp -R 0 . && chmod -R g=u .
+
+RUN chmod a+rwx rasa/models/20191206-212157.tar.gz
+
 EXPOSE 3000 5000
