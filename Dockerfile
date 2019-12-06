@@ -25,7 +25,7 @@ RUN mkdir /workdir
 
 WORKDIR /workdir
 
-COPY /* /workdir
+COPY /* /workdir/
 
 RUN pip3 install -r rasa/requirements.txt
 
