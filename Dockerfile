@@ -30,6 +30,6 @@ COPY / /workdir/
 
 RUN npm install
 
-RUN pip3 install -r rasa/requirements.txt
+RUN pip3 install -r rasa/requirements.txt --extra-index-url https://pypi.rasa.com/simple
 
 EXPOSE 3000 5000
