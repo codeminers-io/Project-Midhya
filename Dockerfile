@@ -15,6 +15,7 @@ RUN apt-get update -y && \
         python3-pip \
         libfreetype6-dev \
         dumb-init \
+        nvidia-modprobe \
         libpq-dev \
 	nodejs \
 	npm \
@@ -44,6 +45,6 @@ RUN chgrp -R 0 . && chmod -R g=u .
 
 RUN chmod a+rwx rasa/models/20191206-212157.tar.gz
 
-RUN chmod +777 /usr/lib/python3/dist-packages --recursive
+RUN chmod +777 /usr/lib/python3/dist-packages/ --recursive
 
 EXPOSE 3000 5005
