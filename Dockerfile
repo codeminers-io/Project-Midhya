@@ -46,4 +46,4 @@ RUN chmod a+rwx rasa/models/20191206-212157.tar.gz
 
 RUN chmod +777 /usr/lib/python3/dist-packages --recursive
 
-EXPOSE 3000 5000
+EXPOSE 3000 5005
