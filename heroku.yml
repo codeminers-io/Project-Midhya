@@ -5,5 +5,5 @@ run:
   web: npm start
   worker:
     command:
-      - /root/.local/bin/rasa run -m ~/rasa/models/ --enable-api --log-file ~/rasa/out.log -p 5005 --cors "*"
+      - rasa run -m ~/rasa/models/ --enable-api --log-file ~/rasa/out.log -p 5005 --cors "*"
     image: web
