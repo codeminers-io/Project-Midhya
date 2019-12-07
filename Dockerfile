@@ -44,10 +44,6 @@ RUN chgrp -R 0 . && chmod -R g=u .
 
 RUN chmod a+rwx rasa/models/20191206-212157.tar.gz
 
-RUN chmod a+rwx /usr/lib/python3/dist-packages
-
-RUN useradd -ms /bin/bash botuser
-
-USER botuser
+RUN chmod +777 /usr/lib/python3/dist-packages --recursive
 
 EXPOSE 3000 5000
