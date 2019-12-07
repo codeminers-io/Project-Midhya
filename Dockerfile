@@ -44,4 +44,8 @@ RUN chgrp -R 0 . && chmod -R g=u .
 
 RUN chmod a+rwx rasa/models/20191206-212157.tar.gz
 
+RUN adduser -D botuser
+
+USER botuser
+
 EXPOSE 3000 5000
