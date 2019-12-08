@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 
 		$.ajax({
-			url: 'https://midhya.herokuapp.com/webhooks/rest/webhook', //  RASA API
+			url: 'https://midhya-rasa.herokuapp.com/webhooks/rest/webhook', //  RASA API
 			type: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
