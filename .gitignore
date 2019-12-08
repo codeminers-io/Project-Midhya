@@ -1,5 +1,2 @@
 node_modules
-rasa/.env
-rasa/__pycache__
-rasa/out.log
-links.txt
+data

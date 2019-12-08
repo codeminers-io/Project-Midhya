@@ -4,7 +4,7 @@
   "description": "Chatbot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js -p 8765"
+    "start": "node index.js -p 3000"
   },
   "author": "CodeMiners",
   "license": "MIT",
