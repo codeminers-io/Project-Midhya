@@ -13,7 +13,7 @@ module.exports = function (webserver, controller) {
     });
 
     // Creates the endpoint for our webhook 
-    app.post('/facebook/webhook', (req, res) => {
+    webserver.post('/facebook/webhook', (req, res) => {
 
         let body = req.body;
 
