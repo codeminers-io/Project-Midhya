@@ -41,6 +41,9 @@ $(document).ready(function () {
 		$('.chatCont').toggle();
 		$('.bot_profile').toggle();
 		$('.chatForm').toggle();
+
+		setBotResponse('welcome');
+
 		document.getElementById('chat-input').focus();
 	});
 	
@@ -125,7 +128,13 @@ $(document).ready(function () {
 				val = 'Sorry I wasn\'t able to understand your Query. Let\' try something else!'
 				var BotResponse = '<p class="botResult">' + val + '</p><div class="clearfix"></div>';
 				$(BotResponse).appendTo('#result_div');
-			} else {
+			} 
+			else if ($.trim(val) == '' || val == 'welcome') { //if there is no response from bot or there is some error
+				val = 'Hello, I am Midhya, Government of India Grievance chat assistant. How Can I help you ?'
+				var BotResponse = '<p class="botResult">' + val + '</p><div class="clearfix"></div>';
+				$(BotResponse).appendTo('#result_div');
+			}
+			else {
 
 				//if we get message from the bot succesfully
 				var msg = "";
