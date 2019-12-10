@@ -60,7 +60,7 @@ module.exports = function (webserver, controller) {
                     var row9 = row['pg_officer_desig'] == undefined ? '' : row['pg_officer_desig'].replace('\'', '');
                     var row10 = row['Organisation levels'] == undefined ? '' : row['Organisation levels'].replace('\'', '');
     
-                    exec("PGPASSFILE=/workdir/.pgpass psql -h ec2-174-129-255-59.compute-1.amazonaws.com -U uzzgeqgptzfgrx -d d7o70knkceadu8 -c \"INSERT INTO \"nodel_officer_details\" (apex_ministry_dept_state, parent_organisation, org_code, org_name, contact_address1, contact_address2, contact_address3, pincode, pg_officer_designation, organisation_levels) VALUES ('" + row1 + "','" + row2 + "','" + row3 + "','" + row4 + "','" + row5 + "','" + row6 + "','" + row7 + "','" + row8 +"','" + row9 + "'," + row10 + ");\"", function(err, data) {  
+                    exec("PGPASSFILE=/workdir/.pgpass /usr/bin/psql -h ec2-174-129-255-59.compute-1.amazonaws.com -U uzzgeqgptzfgrx -d d7o70knkceadu8 -c \"INSERT INTO \"nodel_officer_details\" (apex_ministry_dept_state, parent_organisation, org_code, org_name, contact_address1, contact_address2, contact_address3, pincode, pg_officer_designation, organisation_levels) VALUES ('" + row1 + "','" + row2 + "','" + row3 + "','" + row4 + "','" + row5 + "','" + row6 + "','" + row7 + "','" + row8 +"','" + row9 + "'," + row10 + ");\"", function(err, data) {  
                         console.log(err)
                         console.log(data.toString());
                     });
