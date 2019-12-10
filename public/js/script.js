@@ -130,7 +130,7 @@ $(document).ready(function () {
 				$(BotResponse).appendTo('#result_div');
 			} 
 			else if ($.trim(val) == '' || val == 'welcome') { //if there is no response from bot or there is some error
-				val = 'Hello, I am Midhya, Government of India Grievance chat assistant. How Can I help you ?'
+				val = 'Hello, I am Midhya, Grievance chat assistant. How Can I help you ?'
 				var BotResponse = '<p class="botResult">' + val + '</p><div class="clearfix"></div>';
 				$(BotResponse).appendTo('#result_div');
 			}
