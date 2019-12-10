@@ -45,10 +45,7 @@ module.exports = function (webserver, controller) {
         fs.createReadStream('/dataset/NodalOfficer_Details.csv').pipe(csv())
             .on('data', (row) => {
                 
-                exec("PGPASSFILE=/workdir/.pgpass psql -h ec2-174-129-255-59.compute-1.amazonaws.com -U uzzgeqgptzfgrx -d d7o70knkceadu8 -c \"INSERT INTO \"nodel_officer_details\" (apex_ministry_dept_state, parent_organisation, org_code, org_name, contact_address1, contact_address2, contact_address3, pincode, pg_officer_designation, organisation_levels) VALUES ('" + row[0].replace('\'', '') + "','" + row[1].replace('\'', '') + "','" + row[2].replace('\'', '') + "','" + row[3].replace('\'', '') + "','" + row[4].replace('\'', '') + "','" + row[5].replace('\'', '') + "','" + row[6].replace('\'', '') + "','" + row[7].replace('\'', '') +"','" + row[8].replace('\'', '') + "'," + row[9].replace('\'', '') + ");\"", function(err, data) {  
-                    console.log(err)
-                    console.log(data.toString());
-                });  
+                
 
             })
             .on('end', () => {
