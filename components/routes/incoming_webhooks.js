@@ -42,10 +42,24 @@ module.exports = function (webserver, controller) {
     
     webserver.get('/data/import', (req, res) => {
         try {
-        fs.createReadStream('/dataset/NodalOfficer_Details.csv').pipe(csv())
+        fs.createReadStream('~/dataset/NodalOfficer_Details.csv').pipe(csv())
             .on('data', (row) => {
                 
-                
+                var row1 = row[0] == undefined ? '' : row[0].replace('\'', '');
+                var row2 = row[1] == undefined ? '' : row[0].replace('\'', '');
+                var row3 = row[2] == undefined ? '' : row[0].replace('\'', '');
+                var row4 = row[3] == undefined ? '' : row[0].replace('\'', '');
+                var row5 = row[4] == undefined ? '' : row[0].replace('\'', '');
+                var row6 = row[5] == undefined ? '' : row[0].replace('\'', '');
+                var row7 = row[6] == undefined ? '' : row[0].replace('\'', '');
+                var row8 = row[7] == undefined ? '' : row[0].replace('\'', '');
+                var row9 = row[8] == undefined ? '' : row[0].replace('\'', '');
+                var row10 = row[9] == undefined ? '' : row[0].replace('\'', '');
+
+                exec("PGPASSFILE=/workdir/.pgpass psql -h ec2-174-129-255-59.compute-1.amazonaws.com -U uzzgeqgptzfgrx -d d7o70knkceadu8 -c \"INSERT INTO \"nodel_officer_details\" (apex_ministry_dept_state, parent_organisation, org_code, org_name, contact_address1, contact_address2, contact_address3, pincode, pg_officer_designation, organisation_levels) VALUES ('" + row1 + "','" + row2 + "','" + row3 + "','" + row4 + "','" + row5 + "','" + row6 + "','" + row7 + "','" + row8 +"','" + row9 + "'," + row10 + ");\"", function(err, data) {  
+                    console.log(err)
+                    console.log(data.toString());
+                });  
 
             })
             .on('end', () => {
