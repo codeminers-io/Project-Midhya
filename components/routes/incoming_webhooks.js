@@ -46,7 +46,6 @@ module.exports = function (webserver, controller) {
       const connectionString =
         "postgres://uzzgeqgptzfgrx:60831dd60ddaf75f4f19cc2f21bfc3c4b96bb5fd94cfe04f044b69fcf1e236fd@ec2-174-129-255-59.compute-1.amazonaws.com:5432/d7o70knkceadu8";
       const client = new pg.Client(connectionString);
-      client.connect();
 
       fs.createReadStream("/workdir/dataset/NodalOfficer_Details.csv")
         .pipe(csv())
@@ -93,18 +92,26 @@ module.exports = function (webserver, controller) {
                 ? ""
                 : row["Organisation levels"].replace("'", "");
 
-            const query = client.query(
+            client.connect();
+
+            client.query(
               "INSERT INTO \"nodel_officer_details\" (apex_ministry_dept_state, parent_organisation, org_code, org_name, contact_address1, contact_address2, contact_address3, pincode, pg_officer_designation, organisation_levels) VALUES ('" + row1 + "','" + row2 + "','" + row3 + "','" + row4 + "','" + row5 + "','" + row6 + "','" + row7 + "','" + row8 +"','" + row9 + "'," + row10 + ");"
-            );
-            query.on("end", () => {
-              console.log("Imported...")
-            });
+              , (err, res) => {
+                if (err) {
+                  console.log(err.stack)
+                } else {
+                  console.log(res.rows[0])
+                }
+              });
+
+            client.end();
+
           }
 
           i++;
         })
         .on("end", () => {
-          client.end();
+          
           res.status(200).send("Done");
         });
     } catch (e) {
