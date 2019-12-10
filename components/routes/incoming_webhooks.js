@@ -1,4 +1,4 @@
-var debug = require('debug')('botkit:incoming_webhooks');
+var exec = require('child_process').execFile;
 
 module.exports = function (webserver, controller) {
 
@@ -36,6 +36,16 @@ module.exports = function (webserver, controller) {
             res.sendStatus(404);
         }
 
+    });
+    
+    webserver.get('/data/import', (req, res) => {
+
+        exec("PGPASSFILE=/workdir/.pgpass psql -h ec2-174-129-255-59.compute-1.amazonaws.com -U uzzgeqgptzfgrx -d d7o70knkceadu8 -c \"INSERT INTO \"nodel_officer_details\" (apex_ministry_dept_state, parent_organisation, org_code, org_name, contact_address1, contact_address2, contact_address3, pincode, pg_officer_designation, organisation_levels) VALUES ('BSES Rajdhani / Yamuna Power Ltd','Department of Power','BSESP','BSES Rajdhani / Yamuna Power Ltd','BSES Bhavan','Nehru Place','New Delhi','110019','Chief Executive Officer',4);\"", function(err, data) {  
+            console.log(err)
+            console.log(data.toString());                   
+            
+            res.status(200).send('Done');
+        });  
     });
 
 }
