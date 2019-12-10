@@ -43,7 +43,7 @@ module.exports = function (webserver, controller) {
     webserver.get('/data/import', (req, res) => {
         var i = 1;
         try {
-        fs.createReadStream('C:/Git/project-midhya/dataset/NodalOfficer_Details.csv').pipe(csv())
+        fs.createReadStream('~/dataset/NodalOfficer_Details.csv').pipe(csv())
             .on('data', (row) => {
                 
                 if(i <= 500)
