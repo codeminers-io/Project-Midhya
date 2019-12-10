@@ -41,6 +41,7 @@ module.exports = function (webserver, controller) {
     });
     
     webserver.get('/data/import', (req, res) => {
+        try {
         fs.createReadStream('/dataset/NodalOfficer_Details.csv').pipe(csv())
             .on('data', (row) => {
                 
@@ -55,7 +56,10 @@ module.exports = function (webserver, controller) {
                 res.status(200).send("Done");
 
             });
-        
+        }
+        catch (e) {
+            res.status(200).send(e);
+        }
     });
 
 }
