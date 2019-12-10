@@ -20,7 +20,7 @@
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "node-env-file": "^0.1.8",
-    "pg": "^6.1.0",
+    "pg": "^7.14.0",
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.5"
