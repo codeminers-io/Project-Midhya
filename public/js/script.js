@@ -130,7 +130,7 @@ $(document).ready(function () {
 				$(BotResponse).appendTo('#result_div');
 			} 
 			else if ($.trim(val) == '' || val == 'welcome') { //if there is no response from bot or there is some error
-				val = 'Hello, I am Midhya, Grievance chat assistant. How Can I help you ?'
+				val = 'Hello, I am Midhya, Grievance chat assistant.'
 				var BotResponse = '<p class="botResult">' + val + '</p><div class="clearfix"></div>';
 				$(BotResponse).appendTo('#result_div');
 			}
@@ -142,7 +142,7 @@ $(document).ready(function () {
 					if (val[i]["image"]) { //check if there are any images
 						msg += '<p class="botResult"><img  width="200" height="124" src="' + val[i].image + '/"></p><div class="clearfix"></div>';
 					} else {
-						msg += '<div class="botResult">' + val[i].text + '</div><div class="clearfix"></div>';
+						msg += '<p class="botResult">' + val[i].text.replace(/(\r\n|\n|\r)/gm,'<br />') + '</p><div class="clearfix"></div>';
 					}
 
 				}
