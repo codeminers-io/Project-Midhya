@@ -142,7 +142,7 @@ $(document).ready(function () {
 					if (val[i]["image"]) { //check if there are any images
 						msg += '<p class="botResult"><img  width="200" height="124" src="' + val[i].image + '/"></p><div class="clearfix"></div>';
 					} else {
-						msg += '<p class="botResult">' + val[i].text + '</p><div class="clearfix"></div>';
+						msg += '<div class="botResult">' + val[i].text + '</div><div class="clearfix"></div>';
 					}
 
 				}
