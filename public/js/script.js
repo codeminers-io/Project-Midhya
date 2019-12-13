@@ -125,12 +125,12 @@ $(document).ready(function () {
 		setTimeout(function () {
 
 			if ($.trim(val) == '' || val == 'error') { //if there is no response from bot or there is some error
-				val = 'Sorry I wasn\'t able to understand your Query. Let\' try something else!'
+				val = 'Sorry I didn\'t understand you. Let\'s try something else!'
 				var BotResponse = '<p class="botResult">' + val + '</p><div class="clearfix"></div>';
 				$(BotResponse).appendTo('#result_div');
 			} 
 			else if ($.trim(val) == '' || val == 'welcome') { //if there is no response from bot or there is some error
-				val = 'Hello, I am Midhya, Grievance chat assistant.'
+				val = 'I am Midhya the chatbot, Grievance chat assistant'
 				var BotResponse = '<p class="botResult">' + val + '</p><div class="clearfix"></div>';
 				$(BotResponse).appendTo('#result_div');
 			}
